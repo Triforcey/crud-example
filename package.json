@@ -1,0 +1,33 @@
+{
+  "name": "crud-example",
+  "version": "0.0.0",
+  "description": "A simple example of a CRUD API.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Triforcey/crud-example.git"
+  },
+  "author": "",
+  "license": "GPL-3.0+",
+  "bugs": {
+    "url": "https://github.com/Triforcey/crud-example/issues"
+  },
+  "homepage": "https://github.com/Triforcey/crud-example#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "http": "0.0.0",
+    "mongodb": "^3.0.7",
+    "mustache-express": "^1.2.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.3"
+  },
+  "nodemonConf": {
+    "ext": "js mustache"
+  }
+}
