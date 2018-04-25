@@ -1,20 +1,35 @@
 <!doctype html>
 <html>
-<head></head>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD Example</title>
+  <link href="/styles/main.css">
+</head>
 <body>
   <p>{{msg}}</p>
-  <form action="/potatoes" method="POST">
+  <form action="/potato" method="POST">
     <input type="text" name="name" placeholder="Name">
     <input type="number" name="size" placeholder="Size">
     <button type="submit">Add Potato</button>
   </form>
   <table>
-    {{#potatoes}}
-    <tr>
-      <td>{{name}}</td>
-      <td>{{size}}</td>
-    </tr>
-    {{/potatoes}}
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Size</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#potatoes}}
+      <tr id="{{{_id}}}">
+        <td><input type="text" id="{{{_id}}}-name" value="{{{name}}}" placeholder="Name"></td>
+        <td><input type="number" id="{{{_id}}}-size" value="{{{size}}}" placeholder="Size"></td>
+        <td><button onclick="updatePotato('{{{_id}}}');">Uupdoot Potato</button></td>
+        <td><button onclick="deletePotato('{{{_id}}}');">Dedoot Potato</button></td>
+      </tr>
+      {{/potatoes}}
+    </tbody>
   </table>
+  <script src="/scripts/main.js"></script>
 </body>
 </html>

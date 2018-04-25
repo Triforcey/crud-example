@@ -1,4 +1,4 @@
-var MongoClient = require('mongodb').MongoClient;
+var {MongoClient, ObjectID} = require('mongodb');
 var db;
 
 exports.connect = function (options, callback) {
@@ -13,13 +13,33 @@ exports.connect = function (options, callback) {
 exports.createPotato = function (potato, callback) {
   db.collection('potatoes').save(potato, err => {
     if (err) throw err;
-    console.log('Saved to DB!');
     if (callback) callback();
   });
 };
 
 exports.getPotatoes = async function (callback) {
   var potatoes = await db.collection('potatoes').find().toArray();
-  console.log(potatoes);
   if (callback) callback(potatoes);
+};
+
+exports.updatePotato = async function (potato, callback) {
+  try {
+    potato._id = ObjectID(potato._id);
+  } catch (e) {
+    if (callback) callback(e);
+    return;
+  }
+  potato = await db.collection('potatoes').updateOne({_id: potato._id}, {$set: potato});
+  if (callback) callback(false, potato);
+};
+
+exports.deletePotato = async function (potato, callback) {
+  try {
+    potato._id = ObjectID(potato._id);
+  } catch (e) {
+    if (callback) callback(e);
+    return;
+  }
+  potato = await db.collection('potatoes').deleteOne(potato);
+  callback(false, potato);
 }
