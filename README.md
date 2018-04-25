@@ -53,6 +53,11 @@ Configure enviornment variables:
 export DB_URL="mongodb://user:pwd@your-mongo-server.com/login-database" DB_NAME="your-database"
 ```
 
+Run on a port other than 80 (optional):
+```bash
+export PORT=port-number
+```
+
 Start!
 ```bash
 npm start
