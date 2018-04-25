@@ -14,7 +14,6 @@ function updatePotato(id) {
     })
   };
   fetch(req, init).then(function (res) {
-    console.log(res.status);
     if (res.status.toString()[0] != 2) alert('That ain\'t valid.');
   }).catch(function (err) {
     throw err;

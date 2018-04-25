@@ -1,7 +1,12 @@
 var ajv = new require('ajv')();
 
+function sanitizePotato(potato) {
+  if (typeof potato.size == 'string') potato.size = parseInt(potato.size);
+  return potato;
+}
+
 exports.createPotato = function (potato) {
-  potato.size = parseInt(potato.size);
+  potato = sanitizePotato(potato);
   var valid = ajv.validate({
     type: 'object',
     additionalProperties: false,
@@ -22,7 +27,7 @@ exports.createPotato = function (potato) {
 };
 
 exports.updatePotato = function (potato) {
-  if (typeof potato.size != 'undefined') potato.size = parseInt(potato.size);
+  potato = sanitizePotato(potato);
   var valid = ajv.validate({
     type: 'object',
     additionalProperties: false,
@@ -46,6 +51,7 @@ exports.updatePotato = function (potato) {
 };
 
 exports.deletePotato = function (potato) {
+  potato = sanitizePotato(potato);
   var valid = ajv.validate({
     type: 'object',
     additionalProperties: false,

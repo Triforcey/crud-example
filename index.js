@@ -56,7 +56,6 @@ app.post('/potato', function (req, res) {
 
 app.put('/potato', function (req, res) {
   var potato = validate.updatePotato(req.body);
-  console.log(potato);
   if (!potato) {
     res.status(400).end();
     return;
