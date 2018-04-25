@@ -46,7 +46,7 @@ app.get('/potatoes', function (req, res) {
 app.post('/potato', function (req, res) {
   var potato = validate.createPotato(req.body);
   if (!potato) {
-    res.status(400).send('Ehhh, something ain\'t right.');
+    res.status(400).end();
     return;
   }
   db.createPotato(req.body, () => {
@@ -58,7 +58,7 @@ app.put('/potato', function (req, res) {
   var potato = validate.updatePotato(req.body);
   console.log(potato);
   if (!potato) {
-    res.status(400).send('Ehhhhhhhhheheheheheheh, something broken on your fault. :(');
+    res.status(400).end();
     return;
   }
   db.updatePotato(potato, function (err) {
@@ -73,7 +73,7 @@ app.put('/potato', function (req, res) {
 app.delete('/potato', function (req, res) {
   var potato = validate.deletePotato(req.body);
   if (!potato) {
-    res.status(400).send('Ehhehehehehhee, naaaaaaa, can\'t do that.');
+    res.status(400).end();
     return;
   }
   db.deletePotato(potato, function (err) {
