@@ -1,6 +1,6 @@
 {
   "name": "crud-example",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A simple example of a CRUD API.",
   "main": "index.js",
   "scripts": {
