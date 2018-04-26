@@ -1,4 +1,4 @@
-function updatePotato(id) {
+function replacePotato(id) {
   var name = document.getElementById(id + '-name').value;
   var size = document.getElementById(id + '-size').value;
   var req = new Request('/potato');

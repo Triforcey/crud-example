@@ -14,7 +14,9 @@ A read request is made with the method `GET`. A read request can often be made t
 
 ### Update
 
-An update request is made with the method `PUT`. An update request usually only needs to have an object with the changed values in the body. The server will then change only those values.
+An update request is made with the method `PATCH`. An update request usually only needs to have an object with the changed values in the body. The server will then change only those values.
+
+The other way to save is a replace request made with the method `PUT`. It replaces the entire object on the server with the one we give it. If a field is missing and the server finds it to still be valid, the field will no longer be defined in the object.
 
 ### Delete
 

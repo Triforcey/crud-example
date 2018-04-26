@@ -22,6 +22,16 @@ exports.getPotatoes = async function (callback) {
   if (callback) callback(potatoes);
 };
 
+exports.replacePotato = async function (potato, callback) {
+  try {
+    potato._id = ObjectID(potato._id);
+  } catch (e) {
+    if (callback) callback(e);
+    return;
+  }
+  potato = await db.collection('potatoes').replaceOne({_id: potato._id}, potato);
+}
+
 exports.updatePotato = async function (potato, callback) {
   try {
     potato._id = ObjectID(potato._id);

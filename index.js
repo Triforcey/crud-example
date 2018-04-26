@@ -55,6 +55,21 @@ app.post('/potato', function (req, res) {
 });
 
 app.put('/potato', function (req, res) {
+  var potato = validate.replacePotato(req.body);
+  if (!potato) {
+    res.status(400).end();
+    return;
+  }
+  db.replacePotato(potato, function (err) {
+    if (err) {
+      res.status(400).end();
+      return;
+    }
+    res.end();
+  });
+});
+
+app.patch('/potato', function (req, res) {
   var potato = validate.updatePotato(req.body);
   if (!potato) {
     res.status(400).end();
