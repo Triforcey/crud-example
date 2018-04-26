@@ -38,6 +38,8 @@ Note: Sometimes queries may actually refer to more than one object. If this is a
 2. A MongoDB running somewhere
 3. Your database url, credentials, etc
 
+### What to Do
+
 Clone this repository:
 
 ```bash
