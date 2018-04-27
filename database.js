@@ -2,7 +2,7 @@ var {MongoClient, ObjectID} = require('mongodb');
 var db;
 
 exports.connect = function (options, callback) {
-  var {url, dbName, user, pwd} = options;
+  var {url, dbName} = options;
   MongoClient.connect(url, (err, client) => {
     if (err) throw err;
     db = client.db(dbName);

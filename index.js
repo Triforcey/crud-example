@@ -11,9 +11,7 @@ var validate = require('./validate.js');
 var db = require('./database.js');
 db.connect({
   url: process.env.DB_URL,
-  dbName: process.env.DB_NAME,
-  user: process.env.DB_USER,
-  pwd: process.env.DB_PWD
+  dbName: process.env.DB_NAME
 }, function () {
   server.listen(process.env.PORT || 80, () => {
     console.log(`Listening on port ${process.env.PORT || 80}!`);
