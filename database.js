@@ -30,7 +30,7 @@ exports.replacePotato = async function (potato, callback) {
     return;
   }
   potato = await db.collection('potatoes').replaceOne({_id: potato._id}, potato);
-}
+};
 
 exports.updatePotato = async function (potato, callback) {
   try {
@@ -52,4 +52,4 @@ exports.deletePotato = async function (potato, callback) {
   }
   potato = await db.collection('potatoes').deleteOne(potato);
   callback(false, potato);
-}
+};
