@@ -29,7 +29,8 @@ exports.replacePotato = async function (potato, callback) {
     if (callback) callback(e);
     return;
   }
-  potato = await db.collection('potatoes').replaceOne({_id: potato._id}, potato);
+  await db.collection('potatoes').replaceOne({_id: potato._id}, potato);
+  callback(false);
 };
 
 exports.updatePotato = async function (potato, callback) {
@@ -39,8 +40,8 @@ exports.updatePotato = async function (potato, callback) {
     if (callback) callback(e);
     return;
   }
-  potato = await db.collection('potatoes').updateOne({_id: potato._id}, {$set: potato});
-  if (callback) callback(false, potato);
+  await db.collection('potatoes').updateOne({_id: potato._id}, {$set: potato});
+  if (callback) callback(false);
 };
 
 exports.deletePotato = async function (potato, callback) {
@@ -50,6 +51,6 @@ exports.deletePotato = async function (potato, callback) {
     if (callback) callback(e);
     return;
   }
-  potato = await db.collection('potatoes').deleteOne(potato);
-  callback(false, potato);
+  await db.collection('potatoes').deleteOne(potato);
+  callback(false);
 };
